@@ -1,0 +1,49 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#8D6E63"
+            android:gravity="center"
+            android:text="这是一个标题"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_scrollFlags="scroll|snap" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#8D6E63"
+            android:gravity="center"
+            android:text="这是一个子标题"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.part5.view.recycler.refresh.VerticalRecyclerView
+        android:id="@+id/activity_main_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F0F0F0"
+        app:dividerColor="#BEBEBE"
+        app:dividerHeight="0.8dp"
+        app:dividerLeftMargin="10dp"
+        app:dividerRightMargin="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

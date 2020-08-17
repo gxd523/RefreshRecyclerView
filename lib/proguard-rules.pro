@@ -1,0 +1,1 @@
+-keep public class * implements com.part5.view.recycler.refresh.config.RecyclerModule

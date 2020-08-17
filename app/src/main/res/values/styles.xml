@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="dialogStyle" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">#FFAFBFFF</item>
+    </style>
+
+    <style name="ConfigDialogButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

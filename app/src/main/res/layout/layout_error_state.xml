@@ -1,0 +1,9 @@
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFAB91"
+    android:gravity="center"
+    android:text="页面加载错误\n点击刷新"
+    android:textColor="#424242"
+    android:textSize="18sp" />

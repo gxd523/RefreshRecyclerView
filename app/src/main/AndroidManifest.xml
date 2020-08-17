@@ -1,0 +1,22 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.part5.view.recycler.refresh.sample">
+
+    <application
+        android:icon="@android:mipmap/sym_def_app_icon"
+        android:label="RefreshRecyclerView"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 在此可配置全局的SRV -->
+        <meta-data
+            android:name="com.part5.view.recycler.refresh.sample.MyRecyclerModule"
+            android:value="RecyclerModule" />
+    </application>
+</manifest>
