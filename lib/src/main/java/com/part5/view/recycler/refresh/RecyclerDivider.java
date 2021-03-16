@@ -13,13 +13,11 @@ public class RecyclerDivider extends RecyclerView.ItemDecoration {
     private final int mOrientation;
     private final Paint mPaint;
     private float dividerHeight, leftMargin, rightMargin;
-    private final OnRecyclerDividerListener onRecyclerDividerListener;
 
-    public RecyclerDivider(int orientation, OnRecyclerDividerListener onRecyclerDividerListener) {
+    public RecyclerDivider(int orientation) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
         this.mOrientation = orientation;
-        this.onRecyclerDividerListener = onRecyclerDividerListener;
     }
 
     /**
@@ -49,7 +47,7 @@ public class RecyclerDivider extends RecyclerView.ItemDecoration {
             final int childSize = parent.getChildCount();
             for (int i = 0; i < childSize; i++) {
                 final View child = parent.getChildAt(i);
-                if (onRecyclerDividerListener.isShowDivider(child)) {
+                if (parent instanceof VerticalRecyclerView && ((VerticalRecyclerView) parent).isSpecialItemType(child)) {
                     continue;
                 }
                 RecyclerView.LayoutParams p = (RecyclerView.LayoutParams) child.getLayoutParams();
@@ -63,7 +61,7 @@ public class RecyclerDivider extends RecyclerView.ItemDecoration {
             final int childSize = parent.getChildCount();
             for (int i = 0; i < childSize; i++) {
                 final View child = parent.getChildAt(i);
-                if (onRecyclerDividerListener.isShowDivider(child)) {
+                if (parent instanceof VerticalRecyclerView && ((VerticalRecyclerView) parent).isSpecialItemType(child)) {
                     continue;
                 }
                 RecyclerView.LayoutParams p = (RecyclerView.LayoutParams) child.getLayoutParams();
@@ -76,18 +74,12 @@ public class RecyclerDivider extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-        int size = onRecyclerDividerListener.isShowDivider(view) ? 0 : (int) dividerHeight;
+        boolean isNormalItemType = parent instanceof VerticalRecyclerView && ((VerticalRecyclerView) parent).isSpecialItemType(view);
+        int size = isNormalItemType ? 0 : (int) dividerHeight;
         if (mOrientation == LinearLayoutManager.VERTICAL) {
             outRect.set(0, 0, 0, size);
         } else {
             outRect.set(0, 0, size, 0);
         }
-    }
-
-    public interface OnRecyclerDividerListener {
-        /**
-         * @return Refresher和Loader以及StateView为true
-         */
-        boolean isShowDivider(View view);
     }
 }

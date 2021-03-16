@@ -41,10 +41,14 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
      */
     private final int REFRESHER_HEADER = 100000;
     private final int LOADER_FOOTER = 500000;
+    private final int currentScrollMode;
+    private final int dividerColor;
+    private final float dividerHeight;
+    private final float dividerRightMargin;
+    private final float dividerLeftMargin;
     private int STATE_FOOTER = 300000;
     private int HEADER_TYPE = 200000;
     private int FOOTER_TYPE = 400000;
-
     private AbsRefresher refresher;
     private AbsLoader loader;
     /**
@@ -59,14 +63,12 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
      * 数据加载时的stateView
      */
     private View refreshingView;
-
     private RecyclerState mRecyclerState = RecyclerState.IDLE;
     private RefreshAndLoadingListener refreshLoadingListener;
     private WrapperAdapter wrapperAdapter;
     private RecyclerDivider mDivider;
     private AppBarLayout appBarLayout;
     private boolean isAppBarExpand = true;
-
     /**
      * 往上滑，加载更多
      */
@@ -74,12 +76,6 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
     private boolean isFirstMove = true;
     private float downY;
     private float moveY;
-    private final int currentScrollMode;
-
-    private final int dividerColor;
-    private final float dividerHeight;
-    private final float dividerRightMargin;
-    private final float dividerLeftMargin;
 
     public VerticalRecyclerView(Context context) {
         this(context, null);
@@ -321,18 +317,23 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
         if (height != 0 && layout instanceof LinearLayoutManager) {// 只对LinearLayoutManager设置分割线
             if (mDivider != null) removeItemDecoration(mDivider);
             LinearLayoutManager manager = (LinearLayoutManager) layout;
-            RecyclerDivider.OnRecyclerDividerListener onRecyclerDividerListener = view ->
-                    refresher == view || loader == view || mRecyclerState != RecyclerState.IDLE;
             if (manager.getOrientation() == LinearLayoutManager.VERTICAL) {
-                mDivider = new RecyclerDivider(LinearLayoutManager.VERTICAL, onRecyclerDividerListener);
+                mDivider = new RecyclerDivider(LinearLayoutManager.VERTICAL);
                 mDivider.initVerticalDivider(height, color, dividerLeft, dividerRight);
                 addItemDecoration(mDivider);
             } else if (manager.getOrientation() == LinearLayoutManager.HORIZONTAL) {
-                mDivider = new RecyclerDivider(LinearLayoutManager.HORIZONTAL, onRecyclerDividerListener);
+                mDivider = new RecyclerDivider(LinearLayoutManager.HORIZONTAL);
                 mDivider.initHorizontalDivider(height, color);
                 addItemDecoration(mDivider);
             }
         }
+    }
+
+    /**
+     * Header(Refresher、Header)、Footer(Loader、Footer、StateView)都是SpecialItem
+     */
+    public boolean isSpecialItemType(View view) {
+        return headerList.indexOfValue(view) != -1 || footerList.indexOfValue(view) != -1;
     }
 
     public void setRefreshLoadingListener(RefreshAndLoadingListener listener) {
