@@ -27,12 +27,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * Footer包括loader、footer及loadingView、emptyView、errorView
- * Header包括refresher、header
- */
 public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.OnOffsetChangedListener {
+    /**
+     * Header包括refresher、header
+     */
     private final SparseArray<View> headerList = new SparseArray<>();
+    /**
+     * Footer包括loader、footer及stateView(loadingView、emptyView、errorView)
+     */
     private final SparseArray<View> footerList = new SparseArray<>();
     /**
      * 假设数据不超过10万条
@@ -45,8 +47,17 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
 
     private AbsRefresher refresher;
     private AbsLoader loader;
+    /**
+     * 无数据时的stateView
+     */
     private View emptyView;
+    /**
+     * 错误时的stateView
+     */
     private View errorView;
+    /**
+     * 数据加载时的stateView
+     */
     private View refreshingView;
 
     private RecyclerState mRecyclerState = RecyclerState.IDLE;
@@ -63,12 +74,12 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
     private boolean isFirstMove = true;
     private float downY;
     private float moveY;
-    private int currentScrollMode;
+    private final int currentScrollMode;
 
-    private int dividerColor;
-    private float dividerHeight;
-    private float dividerRightMargin;
-    private float dividerLeftMargin;
+    private final int dividerColor;
+    private final float dividerHeight;
+    private final float dividerRightMargin;
+    private final float dividerLeftMargin;
 
     public VerticalRecyclerView(Context context) {
         this(context, null);
@@ -205,12 +216,12 @@ public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.O
 
     private void changeRecyclerState(RecyclerState recyclerState) {
         // 非IDLE状态下需要去除LOADER,也就是StateView和Loader不会同时存在
-        boolean hasLeader = footerList.get(LOADER_FOOTER) != null;
-        if (recyclerState == RecyclerState.IDLE && !hasLeader) {
+        boolean hasLoader = footerList.get(LOADER_FOOTER) != null;
+        if (recyclerState == RecyclerState.IDLE && !hasLoader) {
             footerList.put(LOADER_FOOTER, loader);
             int insertPosition = wrapperAdapter.getItemCount();
             wrapperAdapter.notifyItemInserted(insertPosition);
-        } else if (recyclerState != RecyclerState.IDLE && hasLeader) {
+        } else if (recyclerState != RecyclerState.IDLE && hasLoader) {
             removeFooter(loader);
         }
 

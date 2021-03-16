@@ -18,7 +18,7 @@ public class WrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final AbsAdapter<?> mAdapter;
     private final SparseArray<View> headerList;
     private final SparseArray<View> footerList;
-    private RecyclerView.AdapterDataObserver mObserver;
+    private final RecyclerView.AdapterDataObserver mObserver;
 
     public WrapperAdapter(AbsAdapter<?> adapter, SparseArray<View> headerList, SparseArray<View> footerList, OnWrapperAdapterListener onWrapperAdapterListener) {
         this.mAdapter = adapter;

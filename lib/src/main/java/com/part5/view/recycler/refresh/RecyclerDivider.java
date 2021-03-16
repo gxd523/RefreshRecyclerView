@@ -13,7 +13,7 @@ public class RecyclerDivider extends RecyclerView.ItemDecoration {
     private final int mOrientation;
     private final Paint mPaint;
     private float dividerHeight, leftMargin, rightMargin;
-    private OnRecyclerDividerListener onRecyclerDividerListener;
+    private final OnRecyclerDividerListener onRecyclerDividerListener;
 
     public RecyclerDivider(int orientation, OnRecyclerDividerListener onRecyclerDividerListener) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
