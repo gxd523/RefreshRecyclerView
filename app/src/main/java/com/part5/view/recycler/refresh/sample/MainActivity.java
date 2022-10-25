@@ -16,9 +16,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity implements MyAdapter.OnSRVAdapterListener, View.OnClickListener {
-    private VerticalRecyclerView recyclerView;
     private final List<View> headerList = new ArrayList<>();
     private final List<View> footerList = new ArrayList<>();
+    private VerticalRecyclerView recyclerView;
     private MyAdapter adapter;
     private boolean refreshError;
     private boolean refreshAnim;

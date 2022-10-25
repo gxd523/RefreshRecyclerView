@@ -10,6 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.part5.view.recycler.refresh.config.RecyclerConfig;
 import com.part5.view.recycler.refresh.config.RecyclerModule;
@@ -18,14 +26,6 @@ import com.part5.view.recycler.refresh.view.AbsRefresher;
 import com.part5.view.recycler.refresh.view.AbsStateView;
 import com.part5.view.recycler.refresh.view.DefaultLoader;
 import com.part5.view.recycler.refresh.view.DefaultRefresher;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class VerticalRecyclerView extends RecyclerView implements AppBarLayout.OnOffsetChangedListener {
     /**

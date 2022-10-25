@@ -4,12 +4,12 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import java.util.List;
 
 /**
  * 核心
@@ -20,7 +20,9 @@ public class WrapperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final SparseArray<View> footerList;
     private final RecyclerView.AdapterDataObserver mObserver;
 
-    public WrapperAdapter(AbsAdapter<?> adapter, SparseArray<View> headerList, SparseArray<View> footerList, OnWrapperAdapterListener onWrapperAdapterListener) {
+    public WrapperAdapter(
+            AbsAdapter<?> adapter, SparseArray<View> headerList, SparseArray<View> footerList, OnWrapperAdapterListener onWrapperAdapterListener
+    ) {
         this.mAdapter = adapter;
         this.headerList = headerList;
         this.footerList = footerList;

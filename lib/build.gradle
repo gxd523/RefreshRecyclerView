@@ -1,14 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.3'
+    namespace 'com.part5.view.recycler.refresh'
+    compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 33
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -23,8 +21,8 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'com.part5:util:0.0.3'
 }
 

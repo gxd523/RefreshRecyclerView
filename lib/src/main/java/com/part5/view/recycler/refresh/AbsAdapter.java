@@ -1,9 +1,9 @@
 package com.part5.view.recycler.refresh;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 /**
  * Created by guoxiaodong on 2020/8/8 15:12
